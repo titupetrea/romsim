@@ -16,4 +16,4 @@ Topics represent adress information:
 
 Publishers send messages to an address and subcribers receive messages. For example if a publisher sends a message to /Bucuresti/1/Unirii, all subscribers to that street receive the message.
 
-A JMS2SMS Gateway subscribers to root topic / and sends sms messages to all registered users.
+A JMS2SMS Gateway subscribes to root topic / and sends sms messages to all registered users.
