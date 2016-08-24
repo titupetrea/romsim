@@ -1,5 +1,4 @@
-# ROMIS
-ROmanian Mass Information System
+# ROMSIM
 
 The system connects the service providers (e.g. RADET, ENEL, public administrations, etc.) with the citizens.
 
