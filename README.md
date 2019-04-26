@@ -7,14 +7,14 @@ The system informs the citizens of stoppages, taxes, fees, road blocks, etc.
 Topics represent adress information:
 
 - example for Bucuresti:
-/Bucuresti/\<district\>/\<street\>/\<number\>/\<entrance\>/\<block\>/\<floor\>/<apartment> (for block addresses)
+/Bucuresti/\<district\>/\<street\>/\<number\>/\<block\>/\<entrance\</\<floor\>/<apartment> (for block addresses)
 /Bucuresti/\<district\>/\<street\>/\<number\> (for houses addresses)
 
 - example for other county:
-/Galati/<city\|commune\|village\>/\<street\>/\<number\>/\<entrance\>/\<block\>/\<floor\>/\<apartment\> (for block addresses)
+/Galati/<city\|commune\|village\>/\<street\>/\<number\>/\<block\>/\<entrance\>/\<floor\>/\<apartment\> (for block addresses)
 /Galati/\<city\|commune\|village\>/\<street\>/\<number\> (for houses addresses)
 
-Publishers send messages to an address and subcribers receive messages. For example if a publisher sends a message to /Bucuresti/1/Unirii, all subscribers to that street receive the message.
+Publishers send messages to an address and subcribers receive messages. For example if a publisher sends a message to /Bucuresti/4/Unirii, all subscribers to that street receive the message.
 
 A JMS2SMS Gateway subscribes to root topic / and sends sms messages to all registered users.
 
