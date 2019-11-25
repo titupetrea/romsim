@@ -1,0 +1,816 @@
+swagger: '2.0'
+info:
+  version: 0.0.1-SNAPSHOT
+  title: ROMSIM API
+  description: 
+    <p>Sistem de Informare in Masa bazat pe un arbore in care nodurile sunt judete,
+    municipii, orase, comune, sate, strazi, numere, blocuri, apartamente iar
+    frunzele sunt numere de telefon.</p>
+    
+    <p>
+    <b>Aceasta este o interfata pentru programe, si nu pentru oameni.</b>
+    </p>
+  contact:
+    email: titupetrea@yahoo.com
+  license:
+    name: MIT
+    url: 'http://opensource.org/licenses/MIT'
+host: romsim.ro
+basePath: /api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: Inregistrare
+    description: Inregistrare numar de telefon
+  - name: Trimitere
+    description: Trimitere mesaj
+paths:
+  '/Bucuresti':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters: 
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        '200':
+          description: OK
+  '/Bucuresti/{sector}':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters: 
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: body
+          name: mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        '200':
+          description: OK
+  '/Bucuresti/{sector}/{strada}':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters: 
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/Bucuresti/{sector}/{strada}/{numar}':
+    put:
+      tags:
+        - Inregistrare
+      summary: Inregistreaza numar de telefon la adresa din url
+      parameters:
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          type: integer
+          format: int32
+          required: true
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          type: string
+          required: true
+        - in: path
+          name: numar
+          description: Numar strada
+          type: string
+          required: true
+        - in: body
+          name: inregistrare
+          description: Inregistrare
+          required: true
+          schema:
+            $ref: '#/definitions/Inregistrare'
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters:
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          type: string
+          required: true
+        - in: path
+          name: numar
+          description: Numar strada
+          type: string
+          required: true
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/Bucuresti/{sector}/{strada}/{numar}/{bloc}':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters: 
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/Bucuresti/{sector}/{strada}/{numar}/{bloc}/{scara}':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters: 
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/Bucuresti/{sector}/{strada}/{numar}/{bloc}/{scara}/{etaj}':
+    post:
+      tags: 
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters:
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/Bucuresti/{sector}/{strada}/{numar}/{bloc}/{scara}/{etaj}/{apartament}':
+    put:
+      tags:
+        - Inregistrare
+      summary: Inregistreaza numar de telefon la adresa din url
+      parameters:
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          type: integer
+          format: int32
+          required: true
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          type: string
+          required: true
+        - in: path
+          name: numar
+          description: Numar strada
+          type: string
+          required: true
+        - in: path
+          name: bloc
+          description: Bloc
+          type: string
+          required: true
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: Etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: path
+          name: apartament
+          description: Numar apartament
+          type: integer
+          format: int32
+          required: true
+          minimum: 1
+        - in: body
+          name: inregistrare
+          description: Inregistrare
+          required: true
+          schema:
+            $ref: '#/definitions/Inregistrare'
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in Bucuresti
+      parameters:
+        - in: path
+          name: sector
+          description: Sector 1, 2, 3, 4, 5 sau 6
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: Etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: path
+          name: apartament
+          description: Apartament
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/{judet}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/{judet}}/{localitate}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/{judet}/{localitate}/{strada}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/{judet}/{localitate}/{strada}/{numar}':
+    put:
+      tags:
+        - Inregistrare
+      summary: Inregistreaza numar de telefon la adresa din url
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          type: string
+          required: true
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          type: string
+          required: true
+        - in: path
+          name: strada
+          description: Nume strada
+          type: string
+          required: true
+        - in: path
+          name: numar
+          description: Numar strada
+          type: string
+          required: true
+        - in: body
+          name: inregistrare
+          description: Inregistrare
+          required: true
+          schema:
+            $ref: '#/definitions/Inregistrare'
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '{judet}/{localitate}/{strada}/{numar}/{bloc}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '{judet}/{localitate}/{strada}/{numar}/{bloc}/{scara}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna, sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '{judet}/{localitate}/{strada}/{numar}/{bloc}/{scara}/{etaj}':
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: Etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: body
+          name: mesaj
+          description: Mesaj
+          required: true
+          schema:
+            $ref: '#/definitions/Mesaj'
+      responses:
+        200:
+          description: OK
+  '/{judet}/{localitate}/{strada}/{numar}/{bloc}/{scara}/{etaj}/{apartament}':
+    put:
+      tags:
+        - Inregistrare
+      summary: Inregistreaza numar de telefon la adresa din url
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          type: string
+          required: true
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          type: string
+          required: true
+        - in: path
+          name: strada
+          description: Nume strada
+          type: string
+          required: true
+        - in: path
+          name: numar
+          description: Numar strada
+          type: string
+          required: true
+        - in: path
+          name: bloc
+          description: Bloc
+          type: string
+          required: true
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: Etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: path
+          name: apartament
+          description: Apartament
+          type: integer
+          format: int32
+          required: true
+          minimum: 1
+        - in: body
+          name: inregistrare
+          description: Inregistrare
+          required: true
+          schema:
+            $ref: '#/definitions/Inregistrare'
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - Trimitere
+      summary: Trimite mesaj in tara
+      parameters:
+        - in: path
+          name: judet
+          description: Nume judet, ex. Arges
+          required: true
+          type: string
+        - in: path
+          name: localitate
+          description: Nume localitate (municipiu, oras, comuna sau sat)
+          required: true
+          type: string
+        - in: path
+          name: strada
+          description: Nume strada
+          required: true
+          type: string
+        - in: path
+          name: numar
+          description: Numar strada
+          required: true
+          type: string
+        - in: path
+          name: bloc
+          description: Bloc
+          required: true
+          type: string
+        - in: path
+          name: scara
+          description: Scara de bloc
+          required: true
+          type: string
+        - in: path
+          name: etaj
+          description: Etaj
+          required: true
+          type: integer
+          format: int32
+          minimum: 0
+        - in: path
+          name: apartament
+          description: Numar apartament
+          required: true
+          type: integer
+          format: int32
+          minimum: 1
+      responses:
+        200:
+          description: OK
+definitions:
+  Inregistrare:
+    type: object
+    required:
+    - numarTelefon
+    properties:
+      numarTelefon:
+        type: string
+        pattern: '07[0-9]{8}'
+        minLength: 10
+        maxLength: 10
+  Mesaj:
+    type: object
+    required:
+    - text
+    properties:
+      text:
+        type: string
+        minLength: 0
+        maxLength: 128
